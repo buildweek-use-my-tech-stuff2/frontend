@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import styled from 'styled-components'
 
 class Login extends React.Component {
 
     state = {
         credentials: {
             username: '',
-            password: ''
+            password: '',
         }
     }
 
@@ -34,9 +35,17 @@ class Login extends React.Component {
         })
     }
 
+    LogInForm = styled.div`
+        display: flex,
+        flex-direction: column,
+        border: 15px black dashed
+        flex-wrap: no-wrap
+        margin: 0 auto
+        `
+    
     render() {
         return (
-            <div>
+            <this.LogInForm>
                 <h1>Log In</h1>
                 <form onSubmit={this.submitHandler}>
                     <input 
@@ -56,7 +65,7 @@ class Login extends React.Component {
                     <button type='submit'>Sign In</button>
                 </form>
                 <Link to='/signup'>Not a User? Click Here!</Link>
-            </div>
+            </this.LogInForm>
         )
     }
 }
