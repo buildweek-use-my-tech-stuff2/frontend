@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Lenders from '../src/Components/Lenders';
+import DummyData from './Components/DummyData';
+import { Route, Link } from "react-router-dom";
+import ProductCard from './Components/ProductCard';
+
+
+
 
 function App() {
+
+ const [products, setProducts] = useState(DummyData);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <Link to = '/'>
+      <button>Home</button>
+      </Link>
+
+      <Route exact path = '/'>
+      <Lenders dummyData = {DummyData}/>
+      </Route>
+ 
+   
+      <Route
+      path="/product/:itemId"
+      render={props => (
+        <ProductCard items = {products} />
+      )}/>
+
+     </div>
   );
-}
+};
 
 export default App;
