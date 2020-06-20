@@ -12,6 +12,8 @@ const StyledCard = styled.div`
     margin-top: 36px;
     color: #5b5656;
     
+   width: 300px;
+    
 
 `;
 
@@ -38,6 +40,11 @@ const TheButton = styled.button`
     
 `
 
+const StyledImg = styled.img`
+  height: 250px;
+  
+`
+
 const Lenders = (props) => {
   console.log(props);
     return (
@@ -49,11 +56,11 @@ const Lenders = (props) => {
         
           <Col>
             <StyledCard>
-              <CardImg top width="100%" src={data.image_url} alt="Card image cap" />
+              <StyledImg top width="100%" src={data.image_url} alt="Card image cap" />
               <CardBody>
                 <CardTitle> </CardTitle>
                 <StyledText>{data.name}</StyledText>
-                <StyledPrice>{`$ ${data.price}`}</StyledPrice>
+                <StyledPrice>{`${data.price}`}</StyledPrice>
                 <TheButton>Rent</TheButton>
               </CardBody>
             </StyledCard>

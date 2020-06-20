@@ -8,40 +8,41 @@ import styled from 'styled-components'
 
 
 const StyledCard = styled.div`
-    display: flex;
-    align-items: flex-start;
-    margin-top: 36px;
-    color: #5b5656;
-    margin: 0 20%;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 36px;
+  color: #5b5656;
+  margin: 0 20%;
+
     
     
     
 `;
 
 const StyledText = styled.p`
-    text-align: left;
-    color: #4d4646;
+  text-align: left;
+  color: #4d4646;
 `
 
 const StyledPrice = styled.p`
-    color: red;
-    text-align: left;
+  color: red;
+  text-align: left;
 `
 const TheButton = styled.button`
     
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid #4d4646;
-    border-radius: 3px;
-    color: #ececec;
-    background-color: #f2a365;  
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #4d4646;
+  border-radius: 3px;
+  color: #ececec;
+  background-color: #f2a365;  
 `
 const StyledImg = styled.img`
   width: 50%;
   
-
 `
+
 
 const ProductCard = (props) => {
 
@@ -62,7 +63,7 @@ const ProductCard = (props) => {
                 <StyledText>{shopItem.id}</StyledText>
                 <StyledText>{shopItem.description}</StyledText>
                 <StyledText>{shopItem.location}</StyledText>
-                <StyledPrice>{`$ ${shopItem.price}`}</StyledPrice>
+                <StyledPrice>{`${shopItem.price}`}</StyledPrice>
                 <TheButton>Rent</TheButton>
               </CardBody>
             </StyledCard>
