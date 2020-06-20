@@ -45,8 +45,9 @@ class Signup extends React.Component {
     submitHandler = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post('signup', this.state.credentials)
-            .then(() => {
+            .post('/api/auth/register', this.state.credentials)
+            .then((res) => {
+                
                 this.props.history.push('/dashboard')
             })
     }
@@ -89,7 +90,7 @@ class Signup extends React.Component {
                     onChange={this.checkboxHandler}
                     id='roles'
                     placeholder='Are you a renter? Check if yes'
-                    required />
+                    />
                 
                 <br />
                 <button type='submit'>Sign Up Now!</button>

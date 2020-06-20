@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 class Login extends React.Component {
 
@@ -23,8 +24,8 @@ class Login extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        axios
-        .post('credentials', this.state.credentials)
+        axiosWithAuth()
+        .post('/api/auth/login', this.state.credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token);
             this.props.history.push('/dashboard')
@@ -57,7 +58,7 @@ class Login extends React.Component {
                         required />
                     <input
                         type='text'
-                        name='username'
+                        name='password'
                         value={this.state.credentials.password}
                         onChange={this.changeHandler}
                         placeholder='Password'
