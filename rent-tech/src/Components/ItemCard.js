@@ -1,24 +1,36 @@
 import React from "react";
 import styled from "styled-components";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ContentWrapper = styled.div`
   border: 2px solid;
   width: 20%;
   background-color:#ECECEC;
   margin-bottom: 30px;
+  display: flex,
+  flex-direction: column,
+  
+  
 `;
 
-const ItemCard = props => {
+const Image = styled.img`
+  height: 100px
+  `
+
+const ItemCard = ({ item }) => {
+
+  const { name, image_url, price, description, location, type, deposit, renter} = item;
+
   return (
     <ContentWrapper>
-      <h2>NAME:</h2>
-      <h2>IMAGE HERE</h2>
-      <h4>PRICE:</h4>
-      <h4>DESCRIPTION:</h4>
-      <h4>LOCATION:</h4>
-      <h4>TYPE:</h4>
-      <h4>DEPOSIT:</h4>
-      <h4>RENTER:</h4>
+      <h2>{name}</h2>
+      <Image src={image_url} />
+      <h4>Price to Rent:  {price}</h4>
+      <h4>Description:  {description}</h4>
+      <h4>Location:   {location}</h4>
+      <h4>{type}</h4>
+{      <h4>Deposit:   {deposit}:</h4>
+}      <h4>Lender:    {renter}</h4>
 
     </ContentWrapper>
   );

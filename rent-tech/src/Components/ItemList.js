@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 import ItemCard from "./ItemCard.js";
+import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 
 const ItemStyle = styled.div`
   display: flex;
@@ -17,11 +18,11 @@ const ItemList = () => {
   useEffect(() => {
     setIsLoading(true);
  
-    axios
-      .get("https://swapi.py4e.com/api/people/?page2")
+    axiosWithAuth()
+      .get("/api/items")
       .then(res => {
-        console.log(res.data.results);
-        setRentItem(res.data.results);
+        console.log(res.data);
+        setRentItem(res.data)
         setIsLoading(false);
       })
       .catch(error => console.log(error));
@@ -31,7 +32,7 @@ const ItemList = () => {
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}
       {rentItem.map(item => (
-        <ItemCard item={item} key={item.name} />
+        <ItemCard item={item} key={item.id} rentItem={rentItem}/>
       ))}
     </ItemStyle>
   );
