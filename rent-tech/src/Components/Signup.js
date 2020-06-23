@@ -27,7 +27,7 @@ class Signup extends React.Component {
             this.setState({
                 credentials: {
                     ...this.state.credentials,
-                    role: 1,
+                    role: '1',
                     [e.target.name]: e.target.value
                 }
             })
@@ -35,7 +35,7 @@ class Signup extends React.Component {
             this.setState({
                 credentials: {
                     ...this.state.credentials,
-                    role: 2,
+                    role: '2',
                     [e.target.name]: e.target.value
                 }
             })
@@ -46,9 +46,12 @@ class Signup extends React.Component {
         e.preventDefault();
         axiosWithAuth()
             .post('/api/auth/register', this.state.credentials)
-            .then((res) => {
-                
-                this.props.history.push('/dashboard')
+            .then(() => {
+                if(document.getElementById('roles') === "checked") {
+                this.props.history.push('/listings')
+                } else if(document.getElementById('roles') !== "checked") {
+                    this.props.history.push('/listings')
+                }
             })
     }
 

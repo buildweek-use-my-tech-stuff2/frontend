@@ -7,12 +7,14 @@ import {NavBar} from './Components/NavBar'
 import styled from "styled-components";
 import {PrivateRoute} from './utils/PrivateRoute';
 import ItemList from '../src/Components/ItemList'
+// import {axiosWithAuth} from './utils/axiosWithAuth'
+// // import Item from './Components/Item'
 
 
-const Header = styled.h1`
-font-size: 120px;
-margin-top: 10px;
-`;
+// const Header = styled.h1`
+// font-size: 120px;
+// margin-top: 10px;
+// `;
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
       <Route exact path='/signup' component = {Signup} />
 
       <PrivateRoute path='/dashboard' component={ItemList} />
+      {/* <PrivateRoute path='/items/:id' render={props => {
+        return <Item {...props} />
+      }} /> */}
     </Switch>
     </div>
   )

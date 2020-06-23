@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 import ItemCard from "./ItemCard.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
@@ -32,7 +33,9 @@ const ItemList = () => {
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}
       {rentItem.map(item => (
-        <ItemCard item={item} key={item.id} rentItem={rentItem}/>
+        <Link key={item.id} to={`/dashboard/${item.id}`}>
+          <ItemCard item={item} key={item.id} rentItem={rentItem}/>
+        </Link>
       ))}
     </ItemStyle>
   );

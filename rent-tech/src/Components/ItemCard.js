@@ -31,6 +31,7 @@ const ItemCard = ({ item }) => {
       <h4>{type}</h4>
 {      <h4>Deposit:   {deposit}:</h4>
 }      <h4>Lender:    {renter}</h4>
+      
 
     </ContentWrapper>
   );
