@@ -1,51 +1,50 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
+import Login from './Components/Login'
+import Signup from './Components/Signup'
+import { Switch, Route } from 'react-router-dom'
+import {NavBar} from './Components/NavBar'
+import styled from "styled-components";
+import {PrivateRoute} from './utils/PrivateRoute';
+import ItemList from '../src/Components/ItemList'
 import Lenders from '../src/Components/Lenders';
 import DummyData from './Components/DummyData';
-import { Route, Link } from "react-router-dom";
 import ProductCard from './Components/ProductCard';
-import styled from 'styled-components'
 import RentTech from './img/RentTech.png'
 
 
+const Header = styled.h1`
+font-size: 120px;
+margin-top: 10px;
+`;
 
-
-function App() {
-
- const [products, setProducts] = useState(DummyData);
-
+const App = () => {
+  const [products, setProducts] = useState(DummyData);
   return (
-    <div className="App">
-      
+    <div className='App'>
+      <NavBar />
+    <Switch>
+      <Route exact path='/' component={Login} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component = {Signup} />
+    
+      <PrivateRoute
+      path="/lenders"
+      render={props => (
+        <Lenders dummyData = {DummyData} />
+      )}/>
 
-      <nav>
-        <img src={RentTech} width="100" height="100"/>
-        
-        <div>
-  
-
-          <Link to="/">Home</Link>
-          {/* <Link to="/checkout">Cart</Link> */}
-        </div>
-      </nav>
-
-      <Link to = '/'>
-      {/* <button>Home</button> */}
-      </Link>
-
-      <Route exact path = '/'>
-      <Lenders dummyData = {DummyData}/>
-      </Route>
- 
-   
-      <Route
+      <PrivateRoute
       path="/product/:itemId"
       render={props => (
         <ProductCard items = {products} />
       )}/>
+      
+      <PrivateRoute path='/dashboard' component={ItemList} />
+    </Switch>
+    </div>
+  )
+}
 
-     </div>
-  );
-};
 
 export default App;
