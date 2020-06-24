@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+import UpdateItem from './UpdateItem'
+import { Link } from 'react-router-dom'
 
 const ContentWrapper = styled.div`
   border: 2px solid;
@@ -32,6 +34,7 @@ const ItemCard = ({ item }) => {
 {      <h4>Deposit:   {deposit}:</h4>
 }      <h4>Lender:    {renter}</h4>
       
+      <Link to={`/update-item/${item.id}`}>Update Item</Link>
 
     </ContentWrapper>
   );
