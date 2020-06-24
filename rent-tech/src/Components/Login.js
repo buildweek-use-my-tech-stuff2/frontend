@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
@@ -28,7 +27,7 @@ class Login extends React.Component {
         .post('/api/auth/login', this.state.credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/dashboard')
+            this.props.history.push('/listings')
         })
         .catch(err => {
             console.log(err)

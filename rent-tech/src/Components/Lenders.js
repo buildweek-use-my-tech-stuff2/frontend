@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col
+    CardBody,
+    CardTitle, Row, Col
   } from 'reactstrap';
 import { Link } from "react-router-dom"; 
 
@@ -52,7 +52,7 @@ const Lenders = (props) => {
     <Row style= {{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
     {props.dummyData.map(data => {
       return (
-      <Link to={`/product/${data.id}`}>
+      <Link to={`/items/${data.id}`}>
         
           <Col>
             <StyledCard>

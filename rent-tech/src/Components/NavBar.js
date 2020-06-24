@@ -7,7 +7,6 @@ export const NavBar = props => {
     const logout= () => {
         localStorage.clear()
     }
-    let user = localStorage.getItem('username')
 
     const NavBarLinks = styled.div`
         max-width: 100%;
@@ -24,8 +23,8 @@ export const NavBar = props => {
                 
                     <Link to='/'>Login</Link>
                     <Link to='/'onClick={logout}>Logout</Link>
+                    <NavLink to='/listings'>Listings</NavLink>
                     <NavLink to='/dashboard'>Dashboard</NavLink>
-                    <NavLink to='listings'>Listings</NavLink>
                 
             </NavBarLinks>
 

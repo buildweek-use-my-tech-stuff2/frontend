@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import styled from 'styled-components'
 
@@ -9,7 +8,7 @@ class Signup extends React.Component {
         credentials: {
             username: '',
             password: '',
-            role: null
+            role: 2
         }
     }
 
@@ -23,12 +22,11 @@ class Signup extends React.Component {
 
     }
     checkboxHandler = e => {
-        if(document.getElementById('roles') === "checked") {
+        if(e.target.checked === true) {
             this.setState({
                 credentials: {
                     ...this.state.credentials,
                     role: 1,
-                    [e.target.name]: e.target.value
                 }
             })
         } else {
@@ -36,7 +34,6 @@ class Signup extends React.Component {
                 credentials: {
                     ...this.state.credentials,
                     role: 2,
-                    [e.target.name]: e.target.value
                 }
             })
         }
@@ -47,8 +44,8 @@ class Signup extends React.Component {
         axiosWithAuth()
             .post('/api/auth/register', this.state.credentials)
             .then((res) => {
-                
-                this.props.history.push('/dashboard')
+                localStorage.setItem('token', res.data.token);
+                this.props.history.push('/login')
             })
     }
 
@@ -89,7 +86,7 @@ class Signup extends React.Component {
                     value={this.state.credentials.role}
                     onChange={this.checkboxHandler}
                     id='roles'
-                    placeholder='Are you a renter? Check if yes'
+                    placeholder='Are you a lender? Check if yes'
                     />
                 
                 <br />

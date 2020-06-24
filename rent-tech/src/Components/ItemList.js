@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom'
 import ItemCard from "./ItemCard.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 
@@ -11,7 +10,7 @@ const ItemStyle = styled.div`
   justify-content: space-around;
 `;
 
-const ItemList = () => {
+const ItemList = (props) => {
   const [rentItem, setRentItem] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +31,8 @@ const ItemList = () => {
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}
       {rentItem.map(item => (
-        <ItemCard item={item} key={item.id} rentItem={rentItem}/>
+        
+          <ItemCard item={item} key={item.id} rentItem={rentItem}/>
       ))}
     </ItemStyle>
   );
