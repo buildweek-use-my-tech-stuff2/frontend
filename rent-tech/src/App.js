@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 import {NavBar} from './Components/NavBar'
 import styled from "styled-components";
 import {PrivateRoute} from './utils/PrivateRoute';
@@ -27,22 +27,29 @@ const App = () => {
     password: '',
     role: null
   })
-  const [products, setProducts] = useState(DummyData);
+  const [products, setProducts] = useState([]);
   const [items, setItems] = useState([])
 
   const getItemsList = () => {
     axiosWithAuth()
       .get('/api/items')
       .then(res => {
-        console.log(res.data);
+        console.log('data', res.data);
         setItems(res.data)})
       .catch(err => console.log(err))
   }
   
   return (
     <div className='App'>
+
+      <div>
+      <Link to="/"><img src={RentTech}/></Link>
+      
+      </div>
+
       <NavBar />
     <Switch>
+      
       <Route exact path='/' component={Login} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component = {Signup} />
@@ -69,6 +76,14 @@ const App = () => {
       {/* <PrivateRoute path='/items/:id' render={props => {
         return <Item {...props} />
       }} /> */}
+
+       <PrivateRoute path='/rentals'> 
+        <Lenders getItemsList={getItemsList}/>
+      </PrivateRoute>
+      <Route path='/items/:itemID'> 
+        <ProductCard getItemsList={getItemsList}/>
+      </Route>
+
     </Switch>
     </div>
   )

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import {
     CardBody,
     CardTitle, Row, Col
   } from 'reactstrap';
 import { Link } from "react-router-dom"; 
+import { axiosWithAuth } from "../utils/axiosWithAuth.js";
+
 
  
 
@@ -72,11 +74,23 @@ const StyledSpan = styled.span`
 `
 
 const Lenders = (props) => {
-  console.log(props);
+
+  const [rentItem, setRentItem] = useState([]);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/items")
+      .then(res => {
+        console.log('data from Lender', res.data);
+        setRentItem(res.data)
+      })
+      .catch(error => console.log(error));
+  }, []);
+
     return (
   <div> 
     <Row style= {{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-    {props.dummyData.map(data => {
+    {rentItem.map(data => {
       return (
       <Link to={`/items/${data.id}`}>
         
