@@ -25,6 +25,7 @@ export const NavBar = props => {
                     <Link to='/'onClick={logout}>Logout</Link>
                     <NavLink to='/listings'>Listings</NavLink>
                     <NavLink to='/dashboard'>Dashboard</NavLink>
+                    <NavLink to='/form'>Add Item</NavLink>
                 
             </NavBarLinks>
 

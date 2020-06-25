@@ -6,9 +6,9 @@ import UpdateItem from './UpdateItem'
 import { Link } from 'react-router-dom'
 
 const ContentWrapper = styled.div`
-  border: 2px solid;
+  border: 7px solid #38CFB1;
   width: 20%;
-  background-color:#ECECEC;
+  background-color:#5B5656;
   margin-bottom: 30px;
   display: flex,
   flex-direction: column,

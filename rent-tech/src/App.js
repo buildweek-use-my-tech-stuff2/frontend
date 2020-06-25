@@ -15,6 +15,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import UpdateItem from './Components/UpdateItem'
 import Item from './Item'
 import {AddItem} from './Components/AddItem' 
+import Form from '../src/Components/Form';
 
 // const Header = styled.h1`
 // font-size: 120px;
@@ -46,6 +47,7 @@ const App = () => {
       <Route exact path='/' component={Login} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component = {Signup} />
+      <Route exact path='/form' component = {Form} />
     
       {/* <PrivateRoute
       path="/listings"
