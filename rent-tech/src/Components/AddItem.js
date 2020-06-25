@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import { ItemContext } from '../contexts/ItemContext'
 
-export const AddItem = props => {
-    const [add, setAdd] = useState({
-        name: '',
-        image_url: '',
-        price: '',
-        description: '',
-        location: '',
-        deposit: '',
-        renter: '',
-        type: ''
-    })
+export const AddItem = (props) => {
+    const {products, setProducts, setItems} = useContext(ItemContext)
 
     const changeHandler = e => {
-        setAdd({
-            ...add,
+        setProducts({
+            ...products,
             [e.target.name]: e.target.value
         })
     }
@@ -23,9 +15,11 @@ export const AddItem = props => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post('/api/items', add)
+            .post('/api/items', products)
             .then(res => {
-                console.log(res);
+                console.log(res)
+                setItems(res.data)
+                props.history.push('/listings')
             })
             .catch(err => console.log(err))
     }
@@ -38,57 +32,57 @@ export const AddItem = props => {
                 name='name' 
                 placeholder= 'Name of Item'
                 onChange={changeHandler}
-                value={add.name} 
+                value={products.name} 
                 
                 />
             <input 
                 type='text'
                 name='image_url' 
                 onChange={changeHandler}
-                value={add.image_url} 
+                value={products.image_url} 
                 placeholder='Image URL'
                 />
             <input 
                 type='text'
                 name='price' 
                 onChange={changeHandler}
-                value={add.price} 
+                value={products.price} 
                 placeholder='Price'
                 />
             <input 
                 type='text'
                 name='description' 
                 onChange={changeHandler}
-                value={add.description} 
+                value={products.description} 
                 placeholder='Description'
                 />
             <input 
                 type='text'
                 name='location' 
                 onChange={changeHandler}
-                value={add.location} 
+                value={products.location} 
                 placeholder='Location'
                 />
             <input 
                 type='text'
                 name='deposit' 
                 onChange={changeHandler}
-                value={add.deposit} 
+                value={products.deposit} 
                 placeholder='Deposit Value'
                 />
             <input 
                 type='text'
                 name='renter' 
                 onChange={changeHandler}
-                value={add.renter} 
-                placeholder='username'
+                value={products.renter} 
+                placeholder='renter name'
                 />  
                 <input 
                 type='text'
                 name='type' 
                 placeholder= 'Name of Item'
                 onChange={changeHandler}
-                value={add.type} 
+                value={products.type} 
                 
                 />
             <button type='submit'>Update Item</button>

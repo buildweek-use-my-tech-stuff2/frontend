@@ -26,14 +26,14 @@ const ItemList = ({items}) => {
         setIsLoading(false);
       })
       .catch(error => console.log(error));
-  }, []);
+  }, [items]);
 
   return (
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}
       {rentItem.map(item => (
           
-            <ItemCard key={item.id} item={item}/>
+            <ItemCard key={item.id}item={item}/>
           
       ))}
     </ItemStyle>
