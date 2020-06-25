@@ -4,13 +4,13 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import { Switch, Route } from 'react-router-dom'
 import {NavBar} from './Components/NavBar'
-import styled from "styled-components";
+// import styled from "styled-components";
 import {PrivateRoute} from './utils/PrivateRoute';
 import ItemList from '../src/Components/ItemList';
-import Lenders from '../src/Components/Lenders';
+// import Lenders from '../src/Components/Lenders';
 import DummyData from './Components/DummyData';
-import ProductCard from './Components/ProductCard';
-import RentTech from './img/RentTech.png'
+// import ProductCard from './Components/ProductCard';
+// import RentTech from './img/RentTech.png'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import UpdateItem from './Components/UpdateItem'
 import Item from './Item'
@@ -27,7 +27,7 @@ const App = () => {
     password: '',
     role: null
   })
-  const [products, setProducts] = useState(DummyData);
+  // const [products, setProducts] = useState(DummyData);
   const [items, setItems] = useState([])
 
   const getItemsList = () => {
@@ -57,16 +57,16 @@ const App = () => {
       <PrivateRoute
       path="/items/:id"
       render={props => {
-        return <Item {...props} getItemsList={getItemsList} items = {items} />
+        return <Item {...props} getItemsList={getItemsList} />
       }}/>
       <PrivateRoute path='/dashboard'>
         <AddItem />
       </PrivateRoute> 
       
       <PrivateRoute path='/listings'> 
-        <ItemList  getItemsList={getItemsList}/>
+        <ItemList  getItemsList={getItemsList} items={items}/>
       </PrivateRoute>
-      <PrivateRoute path='/update-item/id' render= {props => (<UpdateItem {...props} items={items} setItems={setItems} getItemsList={getItemsList} />)} />
+      <PrivateRoute path='/update-item/:id' render= {props => (<UpdateItem {...props} items={items} setItems={setItems} getItemsList={getItemsList} />)} />
       {/* <PrivateRoute path='/items/:id' render={props => {
         return <Item {...props} />
       }} /> */}
