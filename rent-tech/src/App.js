@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -17,6 +17,9 @@ import Item from './Item'
 import {AddItem} from './Components/AddItem' 
 import Form from '../src/Components/Form';
 
+import { UserContext } from './contexts/UserContext'
+import { ItemContext } from './contexts/ItemContext'
+
 // const Header = styled.h1`
 // font-size: 120px;
 // margin-top: 10px;
@@ -24,24 +27,43 @@ import Form from '../src/Components/Form';
 
 const App = () => {
   const [user, setUser] = useState({
-    username: '',
-    password: '',
-    role: null
+    credentials: {
+      username: '',
+      password: '',
+      role: null
+    }
   })
   // const [products, setProducts] = useState(DummyData);
   const [items, setItems] = useState([])
-
-  const getItemsList = () => {
+  const [products, setProducts] = useState({
+    name: '',
+    image_url: '',
+    price: '',
+    description: '',
+    location: '',
+    deposit: '',
+    renter: '',
+    type: ''
+  })
+  useEffect(()=> {
     axiosWithAuth()
       .get('/api/items')
       .then(res => {
         console.log(res.data);
         setItems(res.data)})
       .catch(err => console.log(err))
-  }
+
+  }, [])
+      
+
   
+  console.log(items)
+  
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className='App'>
+      <UserContext.Provider value= {{user, setUser}}>
+        <ItemContext.Provider value = {{items, setItems, isLoading, setIsLoading, products, setProducts}}>
       <NavBar />
     <Switch>
       <Route exact path='/' component={Login} />
@@ -54,24 +76,19 @@ const App = () => {
       render={props => (
         <ItemList dummyData = {DummyData} />
       )}/> */}
-
-      <PrivateRoute
-      path="/items/:id"
-      render={props => {
-        return <Item {...props} getItemsList={getItemsList} />
-      }}/>
       <PrivateRoute path='/dashboard'>
         <AddItem />
       </PrivateRoute> 
       
       <PrivateRoute path='/listings'> 
-        <ItemList  getItemsList={getItemsList} items={items}/>
+        <ItemList />
       </PrivateRoute>
-      <PrivateRoute path='/update-item/:id' render= {props => (<UpdateItem {...props} items={items} setItems={setItems} getItemsList={getItemsList} />)} />
       {/* <PrivateRoute path='/items/:id' render={props => {
         return <Item {...props} />
       }} /> */}
     </Switch>
+    </ItemContext.Provider>
+    </UserContext.Provider>
     </div>
   )
 }
