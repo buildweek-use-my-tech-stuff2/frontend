@@ -29,6 +29,8 @@ export const NavBar = props => {
                     <NavLink to='/listings'>Listings</NavLink>
                     <NavLink to='/dashboard'>Dashboard</NavLink>
                     <Link to='/rentals'>Products for Rent</Link>
+                    <NavLink to='/form'>Add Item</NavLink>
+
                 
             </NavBarLinks>
 

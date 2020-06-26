@@ -43,11 +43,11 @@ const Item = (props) => {
 
     return (
         <div>
-            <ItemCard item={item} />
-            {/* <Link to={`/update-item/${params.id}`}>
+            <ItemCard key={item.id} item={item} />
+            <Link to={`/update-item/${params.id}`}>
                 <button type='submit'>Update</button>
             </Link>
-            <button onClick={deleteItem}>Delete Item</button> */}
+            <button onClick={deleteItem}>Delete Item</button>
         </div>
     )
 }
