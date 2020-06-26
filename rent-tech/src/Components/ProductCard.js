@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Row, Col
   } from 'reactstrap';
 import styled from 'styled-components'
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Switch, Route, Link } from 'react-router-dom'
+
 
 
 const StyledCard = styled.div`
@@ -76,11 +79,29 @@ const StyledSpan = styled.span`
 
 const ProductCard = (props) => {
 
-    const itemId = useParams().itemId;
+  const [rentItem, setRentItem] = useState([]);
 
-    const shopItem = props.items.find(item => item.id === Number(itemId));
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/items")
+      .then(res => {
+        console.log('data from Lender', res.data);
+        setRentItem(res.data)
+      })
+      .catch(error => console.log(error));
+  }, []);
+
+    const { dataID } = useParams().itemID;
+    console.log('use params thingy', dataID);
+
+    const { itemID } = useParams();
+
+    const shopItem = rentItem.find(item => item.id === Number(itemID));
     
     return (
+
+
+      <Link>
         <div>
              <StyledCard>
               <StyledImg src={shopItem.image_url} alt="Card image cap" />
@@ -97,8 +118,10 @@ const ProductCard = (props) => {
                 <TheButton>Rent</TheButton>
               </CardBody>
             </StyledCard>
+
+            
         </div>
-      
+        </Link>
       
        
 

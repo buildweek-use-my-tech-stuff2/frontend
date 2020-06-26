@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+
 export const NavBar = props => {
 
     const logout= () => {
@@ -16,8 +17,10 @@ export const NavBar = props => {
     `;
     return(
         <div className='navigation'>
+        
+        
 
-            <h3>USE MY TECH STUFF</h3>
+            {/* <h3>USE MY TECH STUFF</h3> */}
 
             <NavBarLinks>
                 
@@ -25,7 +28,9 @@ export const NavBar = props => {
                     <Link to='/'onClick={logout}>Logout</Link>
                     <NavLink to='/listings'>Listings</NavLink>
                     <NavLink to='/dashboard'>Dashboard</NavLink>
+                    <Link to='/rentals'>Products for Rent</Link>
                     <NavLink to='/form'>Add Item</NavLink>
+
                 
             </NavBarLinks>
 
