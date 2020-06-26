@@ -28,6 +28,7 @@ const ItemList = ({items}) => {
       .catch(error => console.log(error));
   }, [items]);
 
+
   return (
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}

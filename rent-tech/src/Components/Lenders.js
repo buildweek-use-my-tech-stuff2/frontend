@@ -39,27 +39,27 @@ const StyledPrice = styled.p`
   font-weight: bold;
 
 `
-const TheButton = styled.button`
+// const TheButton = styled.button`
     
-  top: 10px;
-  right: 10px;
-  font-size: 15px;
-  padding: 5px 20px;
-  color: #ececec;
-  border: 3px solid #4D4646;
-  border-radius: 20px;
-  width: auto;
-  background-color: #38cfb1;
-  z-index: 100;
-  font-weight: bold;
+//   top: 10px;
+//   right: 10px;
+//   font-size: 15px;
+//   padding: 5px 20px;
+//   color: #ececec;
+//   border: 3px solid #4D4646;
+//   border-radius: 20px;
+//   width: auto;
+//   background-color: #38cfb1;
+//   z-index: 100;
+//   font-weight: bold;
 
-  :hover {
-    box-shadow: inset 0 0 10px #000000;
-    cursor: pointer;
-    color: #f2a365;
-  }
+//   :hover {
+//     box-shadow: inset 0 0 10px #000000;
+//     cursor: pointer;
+//     color: #f2a365;
+//   }
     
-`
+// `
 
 const StyledImg = styled.img`
 
@@ -99,11 +99,16 @@ const Lenders = (props) => {
               <StyledImg top width="100%" src={data.image_url} alt="Card image cap" />
               <CardBody>
                 <CardTitle> </CardTitle>
-                <StyledText>{data.name}</StyledText>
+                <StyledText>Product : {data.name}</StyledText>
+                <StyledText>Location : {data.location}</StyledText>
                 <StyledText>Renter : {data.renter}</StyledText>
+                <StyledText>Type : {data.type}</StyledText>
+                <StyledText>Product Id : {data.id}</StyledText>
+                <StyledText>Description : {data.description}</StyledText>
+                <StyledPrice>Desposit : {data.deposit}</StyledPrice>
                 {/* <StyledText>{data.type}</StyledText> */}
                 <StyledPrice><StyledSpan>Price :</StyledSpan> {data.price}</StyledPrice>
-                <TheButton>Rent</TheButton>
+                <button>Rent</button>
               </CardBody>
             </StyledCard>
           </Col>

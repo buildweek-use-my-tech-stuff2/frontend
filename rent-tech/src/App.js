@@ -4,13 +4,13 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import { Switch, Route, Link } from 'react-router-dom'
 import {NavBar} from './Components/NavBar'
-// import styled from "styled-components";
+import styled from "styled-components";
 import {PrivateRoute} from './utils/PrivateRoute';
 import ItemList from '../src/Components/ItemList';
-// import Lenders from '../src/Components/Lenders';
+import Lenders from '../src/Components/Lenders';
 import DummyData from './Components/DummyData';
-// import ProductCard from './Components/ProductCard';
-// import RentTech from './img/RentTech.png'
+import ProductCard from './Components/ProductCard';
+import RentTech from './img/RentTech.png'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import UpdateItem from './Components/UpdateItem'
 import Item from './Item'
@@ -20,10 +20,15 @@ import Form from '../src/Components/Form';
 import { UserContext } from './contexts/UserContext'
 import { ItemContext } from './contexts/ItemContext'
 
-// const Header = styled.h1`
-// font-size: 120px;
-// margin-top: 10px;
-// `;
+const Header = styled.h1`
+
+
+  box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898;
+  background-blend-mode: multiply,multiply;
+  height: 100px;
+
+`;
 
 const App = () => {
   const [user, setUser] = useState({
@@ -63,10 +68,10 @@ const App = () => {
   return (
     <div className='App'>
 
-      <div>
-      <Link to="/"><img src={RentTech}/></Link>
+      <Header>
+      <Link to="/"><img src={RentTech} style = {{marginTop:'-68px'}} width="100" height="100"/></Link>
       
-      </div>
+      </Header>
 
       <UserContext.Provider value= {{user, setUser}}>
         <ItemContext.Provider value = {{items, setItems, isLoading, setIsLoading, products, setProducts}}>
@@ -95,10 +100,10 @@ const App = () => {
       }} /> */}
 
        <PrivateRoute path='/rentals'> 
-        <Lenders getItemsList={getItemsList}/>
+        <Lenders />
       </PrivateRoute>
       <Route path='/items/:itemID'> 
-        <ProductCard getItemsList={getItemsList}/>
+        <ProductCard/>
       </Route>
 
     </Switch>
