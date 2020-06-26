@@ -99,9 +99,9 @@ const ProductCard = (props) => {
     const shopItem = rentItem.find(item => item.id === Number(itemID));
     
     return (
+     
 
-
-      <Link>
+      <Link>      
         <div>
              <StyledCard>
               <StyledImg src={shopItem.image_url} alt="Card image cap" />

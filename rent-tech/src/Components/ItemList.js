@@ -27,6 +27,7 @@ const ItemList = (props) => {
       .catch(error => console.log(error));
   }, []);
 
+
   return (
     <ItemStyle>
       {isLoading && <h3>items are on their way...</h3>}
