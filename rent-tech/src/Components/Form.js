@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'; 
 import * as yup from "yup"; 
 import axios from 'axios'; 
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export default function Form() {
     const [post, setPost] = useState();
@@ -53,11 +54,11 @@ export default function Form() {
     const formSubmit = e => {
       e.preventDefault(); 
   
-      axios
-        .post("https://reqres.in/api/users", formState)
+      axiosWithAuth()
+        .post("/api/items", formState)
         .then(res => {
           setPost(res.data);
-          console.log("Rental order received!");
+          console.log("Rental posting received!");
   
           // clear state, could also use 'initialState' here
           setFormState({

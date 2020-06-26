@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { UserContext } from '../contexts/UserContext'
 
 class Login extends React.Component {
 

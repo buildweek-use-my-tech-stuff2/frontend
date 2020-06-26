@@ -81,14 +81,17 @@ export const NavBar = props => {
             {/* <StyledNavDiv> */}
                 <NavBarLinks>
                 
+
                         <StyledLink to='/'>Login</StyledLink>
                         <StyledLink to='/'onClick={logout}>Logout</StyledLink>
                         <StyledNavLink to='/listings'>Listings</StyledNavLink>
                         <StyledNavLink to='/dashboard'>Dashboard</StyledNavLink>
                         <StyledLink to='/rentals'>Products for Rent</StyledLink>
-                    
+                        <StyledLink to='/form'>Add Item</StyledLink>
                 </NavBarLinks>
             {/* </StyledNavDiv> */}
+
+                    
         </div>
 
     )
