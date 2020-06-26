@@ -4,13 +4,13 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import { Switch, Route, Link } from 'react-router-dom'
 import {NavBar} from './Components/NavBar'
-// import styled from "styled-components";
+import styled from "styled-components";
 import {PrivateRoute} from './utils/PrivateRoute';
 import ItemList from '../src/Components/ItemList';
-// import Lenders from '../src/Components/Lenders';
+import Lenders from '../src/Components/Lenders';
 import DummyData from './Components/DummyData';
-// import ProductCard from './Components/ProductCard';
-// import RentTech from './img/RentTech.png'
+import ProductCard from './Components/ProductCard';
+import RentTech from './img/RentTech.png'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import UpdateItem from './Components/UpdateItem'
 import Item from './Item'
@@ -100,10 +100,10 @@ const App = () => {
       }} /> */}
 
        <PrivateRoute path='/rentals'> 
-        <Lenders getItemsList={getItemsList}/>
+        <Lenders />
       </PrivateRoute>
       <Route path='/items/:itemID'> 
-        <ProductCard getItemsList={getItemsList}/>
+        <ProductCard/>
       </Route>
 
     </Switch>
