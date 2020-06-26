@@ -37,15 +37,9 @@ class Login extends React.Component {
     }
 
     LogInForm = styled.div`
-
-        // display: flex,
-        // flex-direction: column,
-        // border: 15px black dashed
-        // flex-wrap: no-wrap
-        // margin: 0 auto
-
         display: flex;
         flex-direction: column;
+        border: 15px black dashed;
         width: 100%;
         max-width: 250px;
         margin: 0 auto;
@@ -130,9 +124,9 @@ class Login extends React.Component {
 
     render() {
         return (
-            // <this.StyledBackground>
+            
                 <this.LogInForm>
-                    <h1 >Log In</h1 >
+                    <h1 >Log In</h1>
                     <form onSubmit={this.submitHandler}>
                         <input
                             type='text'
@@ -152,7 +146,7 @@ class Login extends React.Component {
                     </form>
                     <this.StyledLink to='/signup'>Not a User? Click Here!</this.StyledLink>
                 </this.LogInForm>
-            // </this.StyledBackground>
+            
         )};
 }
 
