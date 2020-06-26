@@ -68,10 +68,10 @@ const App = () => {
   return (
     <div className='App'>
 
-      <Header>
+      {/* <Header>
       <Link to="/"><img src={RentTech} style = {{marginTop:'-68px'}} width="100" height="100"/></Link>
       
-      </Header>
+      </Header> */}
 
       <UserContext.Provider value= {{user, setUser}}>
         <ItemContext.Provider value = {{items, setItems, isLoading, setIsLoading, products, setProducts}}>
