@@ -39,7 +39,6 @@ class Login extends React.Component {
     LogInForm = styled.div`
         display: flex;
         flex-direction: column;
-        border: 15px black dashed;
         width: 100%;
         max-width: 250px;
         margin: 0 auto;

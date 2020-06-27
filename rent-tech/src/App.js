@@ -103,7 +103,7 @@ const App = () => {
         <Lenders />
       </PrivateRoute>
       <Route path='/items/:itemID'> 
-        <ProductCard/>
+        <Item/>
       </Route>
 
     </Switch>
