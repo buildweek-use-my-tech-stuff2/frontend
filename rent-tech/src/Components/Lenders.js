@@ -14,7 +14,6 @@ const StyledCard = styled.div`
 
   margin-top: 36px;
   color: #5b5656;
-  border: 3px solid #38cfb1;
   padding: 10px;
   width: 300px;
   background-color: #5b5656;
