@@ -98,6 +98,7 @@ const ProductCard = (props) => {
 
     const shopItem = rentItem.find(item => item.id === Number(itemID));
     
+    console.log(shopItem)
     return (
      
 
