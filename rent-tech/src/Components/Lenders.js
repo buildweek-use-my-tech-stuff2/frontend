@@ -108,7 +108,7 @@ const Lenders = (props) => {
                 <StyledPrice>Desposit : {data.deposit}</StyledPrice>
                 {/* <StyledText>{data.type}</StyledText> */}
                 <StyledPrice><StyledSpan>Price :</StyledSpan> {data.price}</StyledPrice>
-                <button>Rent</button>
+                <button>Rent</button> 
               </CardBody>
             </StyledCard>
           </Col>
