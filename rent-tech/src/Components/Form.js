@@ -37,7 +37,7 @@ export default function Form() {
       description: yup.string().required("You must enter a description"),
       location: yup.string().required("You must list the item's location"),
       type: yup.string().required("You must list the type of item"),
-      deposit: yup.string().required("You must list your price"),
+      deposit: yup.string().required("You must list your deposit"),
       renter: yup.string().required("You must list your username"),
     });
   
@@ -153,12 +153,12 @@ export default function Form() {
           Price<br /> 
           <input
             id="price"
-            type="text"
+            type="number"
             name="price"
             onChange={inputChange}
             value={formState.price}
           />
-          {errors.image.length > 0 ? (
+          {errors.price.length > 0 ? (
             <p className="error">{errors.price}</p>
           ) : null}
           <br /> 
@@ -185,7 +185,7 @@ export default function Form() {
             onChange={inputChange}
             value={formState.location}
           />
-          {errors.image.length > 0 ? (
+          {errors.location.length > 0 ? (
             <p className="error">{errors.location}</p>
           ) : null}
           <br /> 
@@ -201,7 +201,7 @@ export default function Form() {
             onChange={inputChange}
             value={formState.type}
           />
-          {errors.image.length > 0 ? (
+          {errors.type.length > 0 ? (
             <p className="error">{errors.type}</p>
           ) : null}
           <br /> 
@@ -212,12 +212,12 @@ export default function Form() {
           Deposit<br /> 
           <input
             id="deposit"
-            type="text"
+            type="number"
             name="deposit"
             onChange={inputChange}
             value={formState.deposit}
           />
-          {errors.image.length > 0 ? (
+          {errors.deposit.length > 0 ? (
             <p className="error">{errors.deposit}</p>
           ) : null}
           <br /> 
@@ -233,7 +233,7 @@ export default function Form() {
             onChange={inputChange}
             value={formState.renter}
           />
-          {errors.image.length > 0 ? (
+          {errors.renter.length > 0 ? (
             <p className="error">{errors.renter}</p>
           ) : null}
           <br /> 

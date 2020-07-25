@@ -94,7 +94,7 @@ const ProductCard = (props) => {
     const { dataID } = useParams().itemID;
     console.log('use params thingy', dataID);
 
-    const { itemID } = useParams();
+    const { itemID } = useParams().itemId;
 
     const shopItem = rentItem.find(item => item.id === Number(itemID));
     

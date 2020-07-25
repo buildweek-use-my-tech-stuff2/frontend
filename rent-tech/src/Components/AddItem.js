@@ -85,7 +85,7 @@ export const AddItem = (props) => {
                 value={products.type} 
                 
                 />
-            <button type='submit'>Update Item</button>
+            <button type='submit'>Add Item</button>
         </form>
     )
 }

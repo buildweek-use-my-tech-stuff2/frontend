@@ -117,7 +117,7 @@ class Login extends React.Component {
         text-decoration: none;
         font-variant: small-caps;
         font-family: 'Montserrat', sans-serif;
-        padding: 15px 0 0 55px;
+        
         
 
         

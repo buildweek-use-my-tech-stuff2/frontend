@@ -92,7 +92,7 @@ const Lenders = (props) => {
     <Row style= {{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
     {rentItem.map(data => {
       return (
-      <Link to={`/items/${data.id}`}>
+      <Link to={`/items/${data.id}`} style={{ textDecoration: 'none' }}>
         
         <Col>
             <StyledCard>

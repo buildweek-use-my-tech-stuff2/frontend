@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-
 import UpdateItem from './UpdateItem'
 import { Link } from 'react-router-dom'
 
@@ -12,13 +11,22 @@ const ContentWrapper = styled.div`
   margin-bottom: 30px;
   display: flex,
   flex-direction: column,
-  
-  
-`;
+`
 
 const Image = styled.img`
   height: 100px
   `
+
+const Input = styled.input`
+
+  color: #f2a365
+  // background-color: #5b5656;
+
+  `
+const H4 = styled.h4`
+
+  color: #f2a365
+`
 
 const ItemCard = ({ item }) => {
   const [products, setProducts] = useState({
@@ -93,43 +101,43 @@ const ItemCard = ({ item }) => {
         <button onClick={deleteItem}>Delete Item</button>
 
         <form onSubmit={editItem}>
-          <input 
+          <Input 
             name='name'
             type='text'
             onChange={changeHandler}
             value={products.name} />
             
-            <input 
+            <Input 
             name='image_url'
             type='text'
             onChange={changeHandler}
             value={products.image_url} />
-            <input 
+            <Input 
             name='price'
             type='text'
             onChange={changeHandler}
             value={products.price} />
-            <input 
+            <Input 
             name='description'
             type='text'
             onChange={changeHandler}
             value={products.description} />
-            <input 
+            <Input 
             name='location'
             type='text'
             onChange={changeHandler}
             value={products.location} />
-            <input 
+            <Input 
             name='deposit'
             type='text'
             onChange={changeHandler}
             value={products.deposit} />
-            <input 
+            <Input 
             name='renter'
             type='text'
             onChange={changeHandler}
             value={products.renter} />
-            <input 
+            <Input 
             name='type'
             type='text'
             onChange={changeHandler}
@@ -138,7 +146,7 @@ const ItemCard = ({ item }) => {
         </form>
         
       
-      
+    
 
     </ContentWrapper>
   );

@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { useParams, useHistory } from 'react-router-dom'
 
+
+
+
+
+
+
 const UpdateItem = props => {
     const [data, setData] = useState ({
         name: '',
